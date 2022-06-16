@@ -1,6 +1,8 @@
+[Skip To Content](#content)
+
 <h1 align="center">
   <br>
-  <a href="https://fossbilling.org/"><img src="https://fossbilling.org/logo.png" alt="fossbilling" width="175"></a>
+  <a href="https://fossbilling.org/"><img src="https://fossbilling.org/logo.png" alt="FOSS Billing Logo" width="175"></a>
   <br>
   FOSSBilling
   <br>
@@ -18,6 +20,11 @@
 [![Financial Contributors](https://opencollective.com/fossbilling/tiers/badge.svg?color=brightgreen)](https://opencollective.com/fossbilling)
 </div>
 
+---
+ 
+⚠️ **WARNING:** FOSSBilling is unreleased and still a work in progress. It is not recommended to be used in a production environment. ⚠️
+
+---
 
 **FOSSBilling** is a free open source, billing and client management solution. Whatever the size of your online services business, whether a startup or established, FOSSBilling can help you to automate your invoicing, incoming payments, and client management and communication.
 
@@ -25,18 +32,11 @@ If you run a web hosting business and are looking for an open-source alternative
 
 FOSSBilling is designed to be extensible and to integrate easily with your favourite server management software and payment gateways.
 
-📥 This is self-hosted software that is free for anyone to install — All you need is a web server, running PHP and a MySQL database. For more details, check the [requirements](#requirements) section.
+This is self-hosted software that is free for anyone to install — All you need is a web server, running PHP and a MySQL database. For more details, check the [requirements](#requirements) section.
 
-## Contents
+## FAQ
 
-- [Requirements](#requirements)
-- [Installation](#installation)
-    - [Install the latest development version](#download-the-latest-development-version)
-    - [Install from latest source code](#install-from-latest-source-code)
-    - [Installing with Docker](#installing-with-docker)
-- [Contributing](#contributing)
-- [Licensing](#licensing)
-- [Links](#links)
+Please refer to our [FAQ page](https://docs.fossbilling.org/faq).
 
 ## Requirements
 
@@ -53,16 +53,16 @@ The following environment is highly recommended for running FOSSBilling. It *may
     - gettext
     - openssl
 
-## Example Configurations
-- [nginx](https://github.com/fossbilling/fossbilling/blob/master/data/nginx.conf)
-- [Lighttpd](https://github.com/fossbilling/fossbilling/blob/master/data/lighttpd.conf)
-
 ## Installation
 Installing FOSSBilling is pretty easy. Depending on how you plan to use it there are three different ways to install it:
 
 1. If you are using shared hosting, or are installing FOSSBilling to use on a live production site, then you should probably download and install the **[latest development version](#download-the-latest-development-version)**.
 2. If you're planning to contribute to FOSSBilling's development, and wanting to make pull requests in the future, please directly **[install from latest source code](#install-from-latest-source-code)** instead.
 3. If you are familiar with Docker, you can also choose to install **[FOSSBilling in a Docker container](#installing-with-docker)**.
+
+## Example Configurations
+- [nginx](https://github.com/fossbilling/fossbilling/blob/master/data/nginx.conf)
+- [Lighttpd](https://github.com/fossbilling/fossbilling/blob/master/data/lighttpd.conf)
 
 ### Download the latest development version
 We make a new release of FOSSBilling whenever we have some new cool stuff to introduce you to, or when we fix some bugs 🐞. If you're planning to use FOSSBilling in a production environment then this will likely be the best option for you, as these releases should be more secure and stable.
