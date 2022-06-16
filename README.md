@@ -31,7 +31,7 @@ FOSSBilling is designed to be extensible and to integrate easily with your favou
 
 - [Requirements](#requirements)
 - [Installation](#installation)
-    - [Install the latest stable version](#download-the-latest-stable-version)
+    - [Install the latest development version](#download-the-latest-development-version)
     - [Install from latest source code](#install-from-latest-source-code)
     - [Installing with Docker](#installing-with-docker)
 - [Contributing](#contributing)
@@ -60,11 +60,11 @@ The following environment is highly recommended for running FOSSBilling. It *may
 ## Installation
 Installing FOSSBilling is pretty easy. Depending on how you plan to use it there are three different ways to install it:
 
-1. If you are using shared hosting, or are installing FOSSBilling to use on a live production site, then you should probably download and install the **[latest stable version](#download-the-latest-stable-version)**.
+1. If you are using shared hosting, or are installing FOSSBilling to use on a live production site, then you should probably download and install the **[latest development version](#download-the-latest-development-version)**.
 2. If you're planning to contribute to FOSSBilling's development, and wanting to make pull requests in the future, please directly **[install from latest source code](#install-from-latest-source-code)** instead.
 3. If you are familiar with Docker, you can also choose to install **[FOSSBilling in a Docker container](#installing-with-docker)**.
 
-### Download the latest stable version
+### Download the latest development version
 We make a new release of FOSSBilling whenever we have some new cool stuff to introduce you to, or when we fix some bugs 🐞. If you're planning to use FOSSBilling in a production environment then this will likely be the best option for you, as these releases should be more secure and stable.
 
 First, you should [download the latest release](https://github.com/fossbilling/fossbilling/releases/latest) from our GitHub repository. Each release has a file called "fossbilling.zip" attached to it, and that's exactly what you need to download. Unlike the source code itself, releases already include the Composer packages, so you won't need to run Composer to install PHP packages. This is perfect if you are using shared hosting as you might not have the ability to run Composer yourself.
