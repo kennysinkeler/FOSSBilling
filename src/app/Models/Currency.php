@@ -9,4 +9,8 @@ class Currency extends Model
 {
     use HasFactory;
     protected $guarded = [];
+
+    function cart(){
+        $this->hasMany(Cart::class);
+    }
 }

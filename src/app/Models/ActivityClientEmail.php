@@ -4,8 +4,17 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class activityClientEmail extends Model
+class ActivityClientEmail extends Model
 {
     use HasFactory;
+
+    /**
+     * @return BelongsTo
+     */
+    function client(): BelongsTo
+    {
+        return $this->belongsTo(Client::class);
+    }
 }

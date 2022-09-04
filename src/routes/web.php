@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\Client\HomeController;
+
+use App\Http\Controllers\Client\ProductController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Client\Home;
-use App\Http\Controllers\Admin\Settings as AdminSettings;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,25 +16,16 @@ use App\Http\Controllers\Admin\Settings as AdminSettings;
 |
 */
 
-
-
-// Client Route
-Route::get('/', [Home::class, 'index']);
+Route::get('/', [HomeController::class, 'index']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-Route::prefix('admin')->middleware(['can:view admin'])->group(
-    function () {
-        Route::middleware(['can:edit settings'])->group(
-            function () {
-                Route::get('/settings', [AdminSettings::class, 'show']);
-                Route::post('/settings', [AdminSettings::class, 'save']);
-            }
-        );
-    }
-);
 
+Route::prefix("product")->group(function () {
+    Route::get("/", [ProductController::class, "index"]);
+    Route::get("/{Product:slug}", [ProductController::class,"show"]);
+});
 
 require __DIR__ . '/auth.php';
