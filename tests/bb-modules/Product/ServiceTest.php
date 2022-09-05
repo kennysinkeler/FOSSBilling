@@ -585,7 +585,7 @@ class ServiceTest extends \BBTestCase
         $this->service->setDi($di);
 
         $this->expectException(\Box_Exception::class);
-        $this->expectExceptionMessage('Can not remove product category with products');
+        $this->expectExceptionMessage('Can not remove product category with product');
         $this->service->removeProductCategory($modelProductCategory);
 
     }
@@ -708,7 +708,7 @@ class ServiceTest extends \BBTestCase
             'used'            => '0',
             'start_at'        => '2012-01-01',
             'end_at'          => '2012-01-02',
-            'products'        => 'domain',
+            'product'        => 'domain',
             'periods'         => array(),
         );
 
@@ -1233,4 +1233,3 @@ class ServiceTest extends \BBTestCase
         $this->assertEquals((double) $amount, $result);
     }
 }
- 

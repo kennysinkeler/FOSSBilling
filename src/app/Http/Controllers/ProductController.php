@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Client;
+namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Product;
@@ -16,7 +16,7 @@ class ProductController extends Controller
     function index(): Factory|View|Application
     {
         $products = Product::all();
-        return view("client.product.index", ['products' => $products]);
+        return view("client.product.index", ['product' => $products]);
     }
 
     /**
