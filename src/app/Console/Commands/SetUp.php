@@ -67,9 +67,12 @@ class SetUp extends Command
 
 
                 $admin = Role::firstOrCreate(['name' => 'admin', "guard_name" => "admin"]);
-                $permission = Permission::firstOrCreate(['name' => 'view admin', "guard_name" => "admin"]);
-                $admin->givePermissionTo($permission);
-                $permission = Permission::firstOrCreate(['name' => 'edit settings', "guard_name" => "admin"]);
+                $permission[] = Permission::firstOrCreate(['name' => 'view clients', "guard_name" => "admin"]);
+                $permission[] = Permission::firstOrCreate(['name' => 'edit clients', "guard_name" => "admin"]);
+                $permission[] = Permission::firstOrCreate(['name' => 'add clients', "guard_name" => "admin"]);
+                $permission[] = Permission::firstOrCreate(['name' => 'delete clients', "guard_name" => "admin"]);
+                $permission[] = Permission::firstOrCreate(['name' => 'view admin', "guard_name" => "admin"]);
+                $permission[] = Permission::firstOrCreate(['name' => 'edit settings', "guard_name" => "admin"]);
                 $admin->givePermissionTo($permission);
 
                 $staff = Role::firstOrCreate(['name' => 'staff', "guard_name" => "admin"]);

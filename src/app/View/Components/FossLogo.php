@@ -3,17 +3,16 @@
 namespace App\View\Components;
 
 use Illuminate\View\Component;
-use Illuminate\View\View;
 
-class AdminLayout extends Component
+class FossLogo extends Component
 {
     /**
      * Get the view / contents that represents the component.
      *
-     * @return View
+     * @return \Illuminate\View\View
      */
     public function render()
     {
-        return view('layouts.admin.app');
+        return view('components.fossbilling-logo');
     }
 }
