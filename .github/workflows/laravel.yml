@@ -1,82 +1,82 @@
 name: Laravel
 
 on:
-    push:
-        branches:
-            - 'lara'
-    pull_request:
-        branches:
-            - 'lara'
+  push:
+    branches:
+      - 'lara'
+  pull_request:
+    branches:
+      - 'lara'
 
 jobs:
-    test:
-        runs-on: ubuntu-20.04
-        strategy:
-            fail-fast: false
-            matrix:
-                include:
-                    -   php-version: 8.1
-                        name: Unit
-                        skip-web-check: 1
-                        database: mariadb:10.6
-                    -   php-version: 8.1
-                        name: Unit
-                        skip-web-check: 1
-                        database: mariadb:10.9
-                    -   php-version: 8.1
-                        name: Unit
-                        skip-web-check: 1
-                        database: mysql:8.0
-        services:
-            database:
-                image: ${{ matrix.database }}
-                env:
-                    MYSQL_ALLOW_EMPTY_PASSWORD: yes
-                    MYSQL_DATABASE: testing
-                    MYSQL_USER: fossbilling
-                    MYSQL_PASSWORD: fossbilling
-                ports:
-                    - 3306:3306
-        steps:
-            -   name: Checkout
-                uses: actions/checkout@v3
-                with:
-                    fetch-depth: 0
-            -   name: Composer validate
-                run: |
-                    composer validate
-            -   name: Composer install
-                run: |
-                    composer install --prefer-dist --no-interaction --no-progress
+  test:
+    runs-on: ubuntu-20.04
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - php-version: 8.1
+            name: Unit
+            skip-web-check: 1
+            database: mariadb:10.6
+          - php-version: 8.1
+            name: Unit
+            skip-web-check: 1
+            database: mariadb:10.9
+          - php-version: 8.1
+            name: Unit
+            skip-web-check: 1
+            database: mysql:8.0
+    services:
+      database:
+        image: ${{ matrix.database }}
+        env:
+          MYSQL_ALLOW_EMPTY_PASSWORD: yes
+          MYSQL_DATABASE: testing
+          MYSQL_USER: fossbilling
+          MYSQL_PASSWORD: fossbilling
+        ports:
+          - 3306:3306
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Composer validate
+        run: |
+          composer validate
+      - name: Composer install
+        run: |
+          composer install --prefer-dist --no-interaction --no-progress
 
-            -   name: Install NPM dependencies
-                run: |
-                    npm ci
-            -   name: Build Vite assets
-                run: |
-                    npm run build
+      - name: Install NPM dependencies
+        run: |
+          npm ci
+      - name: Build Vite assets
+        run: |
+          npm run build
 
-            -   name: Ensure MySQL is up
-                env:
-                    PORT: 3306
-                run: |
-                    mysqladmin -h"127.0.0.1" -P 3306 --user=fossbilling --password=fossbilling ping --wait=5
-            -   name: Execute unit tests
-                env:
-                    APP_KEY: 'base64:KMULExU1bLNesmDqPZAFzDJXF3gC0N7s/U2CVggxkr8'
-                    APP_ENV: testing
-                    DB_HOST: 127.0.0.1
-                    DB_DATABASE: testing
-                    DB_USERNAME: fossbilling
-                    DB_PASSWORD: fossbilling
-                run: |
-                      php artisan test
-            -   name: Execute Pint
-                run: |
-                  ./vendor/bin/pint
+      - name: Ensure MySQL is up
+        env:
+          PORT: 3306
+        run: |
+          mysqladmin -h"127.0.0.1" -P 3306 --user=fossbilling --password=fossbilling ping --wait=5
+      - name: Execute unit tests
+        env:
+          APP_KEY: 'base64:KMULExU1bLNesmDqPZAFzDJXF3gC0N7s/U2CVggxkr8'
+          APP_ENV: testing
+          DB_HOST: 127.0.0.1
+          DB_DATABASE: testing
+          DB_USERNAME: fossbilling
+          DB_PASSWORD: fossbilling
+        run: |
+          php artisan test
+      - name: Execute Pint
+        run: |
+          ./vendor/bin/pint
 
-            -   name: Execute phpstan
-                run: |
-                  ./vendor/bin/phpstan analyse
+      - name: Execute phpstan
+        run: |
+          ./vendor/bin/phpstan analyse
 
 
