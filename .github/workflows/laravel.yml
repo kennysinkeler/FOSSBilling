@@ -70,7 +70,11 @@ jobs:
                     DB_USERNAME: fossbilling
                     DB_PASSWORD: fossbilling
                 run: |
-                    php artisan test
+                      php artisan test
+            -   name: Execute Pint
+                run: |
+                  ./vendor/bin/pint
+
             -   name: Execute phpstan
                 run: |
                   ./vendor/bin/phpstan analyse
